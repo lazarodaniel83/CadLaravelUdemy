@@ -7,18 +7,11 @@ use App\Categoria;
 
 class ControladorCategoria extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
-        $cats = Categoria::all(); 
+        $cats = Categoria::all();
         return view('categorias',compact('cats'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -102,5 +95,16 @@ class ControladorCategoria extends Controller
             $cat->delete();
         }
         return redirect('/categorias');
+    }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexJson()
+    {
+        $cats = Categoria::all(); 
+        return json_encode($cats);
     }
 }
